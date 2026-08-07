@@ -37,7 +37,12 @@
   table { width:100%; border-collapse:collapse; margin-top:3mm; }
   th { font-family:Consolas,monospace; font-size:7.5pt; letter-spacing:.14em; text-transform:uppercase;
        color:var(--brass); text-align:left; padding:1.8mm 2mm; border-bottom:.4mm solid var(--ink); }
-  td { font-size:9.5pt; line-height:1.4; padding:2mm; border-bottom:.2mm solid rgba(20,17,12,.2); vertical-align:top; }
+  /* Table padding is load-bearing on page 5, which carries the glossary and is the longest page
+     in every guide. The page is a fixed 296mm with overflow:hidden -- content past the bottom is
+     DELETED, not reflowed -- and Layer 8 was overflowing it. Anything that adds vertical space
+     here can silently cost a reader the last row of the glossary, so re-run
+     check_guide_overflow.py after touching this rule. */
+  td { font-size:9.5pt; line-height:1.36; padding:1.7mm 2mm; border-bottom:.2mm solid rgba(20,17,12,.2); vertical-align:top; }
   td.k { width:38mm; font-weight:bold; }
   text { font-family:Consolas,"Courier New",monospace; }
   .t  { font-size:9.2px; letter-spacing:.05em; fill:#14110C; }
